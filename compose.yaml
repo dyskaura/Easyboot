@@ -16,6 +16,16 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+  redis:
+    image: redis:7.4-alpine
+    container_name: easyboot-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - easyboot-redis-data:/data
 
 volumes:
   easyboot-mysql-data:
+  easyboot-redis-data:

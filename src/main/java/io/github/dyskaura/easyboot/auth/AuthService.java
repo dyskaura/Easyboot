@@ -1,6 +1,7 @@
 package io.github.dyskaura.easyboot.auth;
 
 import io.github.dyskaura.easyboot.common.BusinessException;
+import io.github.dyskaura.easyboot.captcha.CaptchaService;
 import io.github.dyskaura.easyboot.security.JwtService;
 import io.github.dyskaura.easyboot.user.Role;
 import io.github.dyskaura.easyboot.user.User;
@@ -23,6 +24,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final CaptchaService captchaService;
 
     @Transactional
     public AuthResponse register(RegisterRequest request) {
@@ -45,6 +47,7 @@ public class AuthService {
 
     @Transactional(readOnly = true)
     public AuthResponse login(LoginRequest request) {
+        captchaService.verify(request.captchaId(), request.captchaCode());
         String username = request.username().trim().toLowerCase();
         Authentication authentication;
         try {

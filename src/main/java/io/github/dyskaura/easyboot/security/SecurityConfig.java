@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/auth/login",
                                 "/api/auth/register",
+                                "/api/captcha",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/h2-console/**"

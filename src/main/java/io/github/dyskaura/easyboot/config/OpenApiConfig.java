@@ -17,7 +17,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("EasyBoot API")
-                        .version("0.1.0")
+                        .version("0.2.0")
                         .description("面向 Java 初学者的 Spring Boot 快速开发后端"))
                 .addSecurityItem(new SecurityRequirement().addList(schemeName))
                 .components(new Components().addSecuritySchemes(schemeName,

@@ -2,6 +2,7 @@ package io.github.dyskaura.easyboot.user;
 
 import io.github.dyskaura.easyboot.common.ApiResponse;
 import io.github.dyskaura.easyboot.common.PageResponse;
+import io.github.dyskaura.easyboot.log.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -35,6 +36,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
+    @Operation("更新用户")
     public ApiResponse<UserResponse> update(
             @PathVariable Long id,
             @Valid @RequestBody UpdateUserRequest request
@@ -43,6 +45,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation("删除用户")
     public ApiResponse<Void> delete(@PathVariable Long id, Authentication authentication) {
         userService.delete(id, authentication.getName());
         return ApiResponse.success("用户删除成功", null);

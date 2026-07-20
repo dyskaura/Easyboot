@@ -4,10 +4,18 @@ spring:
     username: sa
     password:
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: create-drop
+  data:
+    redis:
+      repositories:
+        enabled: false
 
 easyboot:
   jwt:
     secret: ZWFzeWJvb3QtdGVzdC1zZWNyZXQta2V5LWlzLWxvbmcgZW5vdWdo
     expiration-seconds: 3600
+  storage:
+    location: ./target/test-uploads
+    max-size: 10485760
