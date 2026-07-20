@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:easyboot-test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+easyboot:
+  jwt:
+    secret: ZWFzeWJvb3QtdGVzdC1zZWNyZXQta2V5LWlzLWxvbmcgZW5vdWdo
+    expiration-seconds: 3600

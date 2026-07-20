@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: easyboot-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: easyboot
+      MYSQL_ROOT_PASSWORD: easyboot
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - easyboot-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-peasyboot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  easyboot-mysql-data:
